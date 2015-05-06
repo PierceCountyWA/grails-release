@@ -1,6 +1,10 @@
 grails.project.work.dir = 'target'
 grails.project.docs.output.dir = "docs"
 
+grails.project.repos.default = "snapshots"
+grails.project.repos.snapshots.url = "https://maven.co.pierce.wa.us/nexus/content/repositories/snapshots"
+grails.project.repos.releases.url = "https://maven.co.pierce.wa.us/nexus/content/repositories/releases"
+
 grails.project.dependency.resolver = "maven"
 grails.project.dependency.resolution = {
 
@@ -13,7 +17,8 @@ grails.project.dependency.resolution = {
         grailsCentral()
 
         mavenLocal()
-        mavenCentral()
+        mavenRepo "https://maven.co.pierce.wa.us/nexus/content/groups/public"
+//        mavenCentral()
     }
 
     plugins {
@@ -21,7 +26,7 @@ grails.project.dependency.resolution = {
     }
 
     dependencies {
-        compile("org.apache.maven:maven-ant-tasks:2.1.3") {
+        compile("org.apache.maven:maven-ant-tasks:2.1.4-pc-SNAPSHOT") {
             excludes "commons-logging", "xml-apis", "groovy"
         }
         test("org.gmock:gmock:0.8.3") {
